@@ -1,0 +1,22 @@
+{
+  "name": "pr05-fes",
+  "version": "1.0.0",
+  "description": "experiments and research for pr05 Friendly Error System project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'Error: no test specified'; false"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sproutleaf/pr05-fes.git"
+  },
+  "keywords": [
+    "p5.js"
+  ],
+  "author": "Miaoye Que",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sproutleaf/pr05-fes/issues"
+  },
+  "homepage": "https://github.com/sproutleaf/pr05-fes#readme"
+}
