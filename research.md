@@ -38,6 +38,7 @@
 * [Zod](https://zod.dev/): a Typescript-first schema validation tool with static type inference. Currently, p5.js documentation fits the jsdoc format, and can be readily leveraged upon to generate TypeScript definitions to be used with `Zod`.
 
   * `Zod` is already used in p5's website building process.
+  * Also see [Comparison](https://zod.dev/?id=comparison), where `Zod` is compared with some other widely-used validation libraries, including `joi` and `yup`.
 
 * [joi](https://www.npmjs.com/package/joi): Feature-rich, powerful, provides detailed error messages out-of-the-box that can be used in FES. Multiple definitions possible to support complex overloading of functions. However, performance might be slow as a result of the rich suite of features (pending benchmarking). Example usage below:
 
@@ -119,7 +120,7 @@ console.log(validateParameters(array(blendModeSchema), ['INVALID']));
 * Benchmarking the performance for the above libraries, with priority given to `Zod`.
 * Evaluating the error messages after parameter validation.
 
-**Concerns: (ALL ADDRESSED DURING MEETING)**
+**Concerns: (ALL ADDRESSED DURING MEETING)**:
 
 * ~~Given the amount of p5.js functions, there might be a lot of configuration involved to ensure that all parameters are validated.~~
 * ~~How can we make sure that, if a p5.js function is added or modified, the validation logic will also be updated accordingly? (Maybe we can look at how documentation is updated to keep in sync with source code for now)~~
@@ -132,6 +133,7 @@ console.log(validateParameters(array(blendModeSchema), ['INVALID']));
 
 ## References
 
+* [zod-accelerator](https://github.com/duplojs/duplojs-zod-accelerator): accelerates Zod's throughput up to ~100x.
 * [benchmark.js](https://benchmarkjs.com/): a benchmarking library that supports high-resolution timers and returns statistically significant results.
 * [JavaScript Parsing Libraries Benchmark](https://chevrotain.io/performance/)
 * [Top 10 Javascript Data Validation Libraries](https://byby.dev/js-object-validators)
