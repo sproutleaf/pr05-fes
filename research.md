@@ -1,8 +1,8 @@
-# Issues
+# Revamping the Friendly Error System (FES) in p5.js
 
-## Overridden Constants and Functions
+## #1: Overridden Constants and Functions
 
-**Approaches**:
+**Approach**:
 
 * Using a JavaScript parser to statically analyze the user's source code, and discover accidentally overridden constants and functions.
 
@@ -29,7 +29,7 @@
 * Benchmark 2 parsers (`Acorn`, `Espree`) with a larger file and the help of [tinybench](https://github.com/tinylibs/tinybench).
 * Experiement with using ESLint by adding an AST-enabled parser and setting custom configuration.
 
-## Parameter Validation
+## #2: Parameter Validation
 
 **Approach**: Using a JavaScript validation library at runtime to detect errors.
 
@@ -124,6 +124,24 @@ console.log(validateParameters(array(blendModeSchema), ['INVALID']));
 
 * ~~Given the amount of p5.js functions, there might be a lot of configuration involved to ensure that all parameters are validated.~~
 * ~~How can we make sure that, if a p5.js function is added or modified, the validation logic will also be updated accordingly? (Maybe we can look at how documentation is updated to keep in sync with source code for now)~~
+
+## Road Map
+
+* [ ] Overridden Constants and Functions
+  * [ ] Select a parser (or ESLint config + AST-enabled parser)
+  * [ ] Replace current method (comparing user's internal with p5.js code) with parser method
+  * [ ] Test for dependency size reduction
+
+* [ ] Parameter Validation
+  * [ ] Generate Zod schemas from JSDoc definitions
+  * [ ] Replace current parameter validation with Zod-based parameter validation
+  * [ ] Clean up legacy code usage (`parameterData.json` and so on)
+  * [ ] Support interleaved parameters
+  * [ ] Support top-level parameter validation wrapping
+
+* [ ] Additional Tasks (lower priority & implementation optional)
+  * [ ] Catch errors that do not originate from p5.js and provide friendly errors
+  * [ ] Expand and complete the internationalization feature of FES
 
 ## Related GitHub Issues
 
