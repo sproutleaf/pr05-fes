@@ -6,12 +6,14 @@
 
 ## Table of Content
 
-- [Overridden Constants and Functions](#1-overridden-constants-and-functions)
-- [Parameter Validation](#2-parameter-validation)
-- [Road Map](#road-map)
-- [Project Timeline](#project-timeline)
-- [Related GitHub Issues](#related-github-issues)
-- [References](#references)
+- [Revamping the Friendly Error System (FES) in p5.js](#revamping-the-friendly-error-system-fes-in-p5js)
+  - [Table of Content](#table-of-content)
+  - [#1: Overridden Constants and Functions](#1-overridden-constants-and-functions)
+  - [#2: Parameter Validation](#2-parameter-validation)
+  - [Road Map](#road-map)
+  - [Project Timeline](#project-timeline)
+  - [Related GitHub Issues](#related-github-issues)
+  - [References](#references)
 
 ## #1: Overridden Constants and Functions
 
@@ -19,11 +21,15 @@
 
 - Use a JavaScript parser to statically analyze the user's source code, and discover accidentally overridden constants and functions.
 
-  - Out of all the parsers experimented (`oxc`, `SWC`, `Babel`, `Acorn` and `Espree`), `Acorn` and `Espree` are consistently the fastest.
+  - Out of all the parsers experimented (`oxc`, `SWC`, `Babel`, `Acorn` and `Espree`), `Acorn` and `Espree` are consistently the fastest. Experiment here is based on [Ken's repo](https://github.com/limzykenneth/p5-fes).
 
     ![Parser Benchmarking](/images/parser-benchmark.png)
 
-- Use `ESLint`, with the options [no-redeclare](https://eslint.org/docs/latest/rules/no-redeclare#rule-details) and [no-param-reassign](https://eslint.org/docs/latest/rules/no-param-reassign#rule-details) enabled. This could mean a very simple change of configuration file. It's also possible to [configure a parser in ESLint](https://eslint.org/docs/latest/use/configure/parser) so that user's source code can be turned into an AST for evalution.
+  - Wrote a file with hundreds of p5 overrides for `Acorn` and `Espree` to parse; benchmarked results show that `Espree` is a lot faster on a sigfinicantly larger file.
+  
+    ![Acorn vs Espree](/images/acorn-espree.png)
+
+- We also noted that `Espree` is the default parser in and developed by `ESLint`. It's possible for us to incorporate `ESLint` in p5.js, use `Espree` and customize with various `ESLint` rules, such as [no-redeclare](https://eslint.org/docs/latest/rules/no-redeclare#rule-details) and [no-param-reassign](https://eslint.org/docs/latest/rules/no-param-reassign#rule-details). However, this might not be needed eventually since `ESLint` comes with many default configurations that seem excessive for p5's use case and out of scope for what we want to offer to the users.
 
 **Measurement**:
 
@@ -35,8 +41,8 @@
 
 **Next Steps**:
 
-- Benchmark 2 parsers (`Acorn`, `Espree`) with a larger file and the help of [tinybench](https://github.com/tinylibs/tinybench).
-- Experiment with using ESLint by adding an AST-enabled parser and setting custom configuration.
+- [x] Benchmark 2 parsers (`Acorn`, `Espree`) with a larger file and the help of [tinybench](https://github.com/tinylibs/tinybench).
+- [ ] Add `Espree` to where we [currently detect overridden constants and functions](https://github.com/processing/p5.js/blob/b99f57f9a2c25c636e69b7d7944991a14ad7c0c2/src/core/friendly_errors/sketch_reader.js#L4).
 
 ## #2: Parameter Validation
 
@@ -55,9 +61,7 @@ This approach has several issues:
 
 **Proposed Approach**:
 
-Use [Zod](https://zod.dev/), a TypeScript-first schema validation library with static type inference to detect errors.
-
-Currently, p5.js documentation fits the JSDoc format, and can be readily leveraged upon to generate TypeScript definitions that can be used with `Zod`.
+Use [Zod](https://zod.dev/), a TypeScript-first schema validation library with static type inference to perform parameter validation.
 
 `Zod` has the following advantages:
 
@@ -140,16 +144,16 @@ console.log(validateParameters(array(blendModeSchema), ['INVALID']));
 ## Road Map
 
 - [ ] Overridden Constants and Functions
-  - [ ] Select a parser (or ESLint config + AST-enabled parser)
+  - [x] Select a parser (or ESLint config + AST-enabled parser)
   - [ ] Replace current method (comparing user's internal with p5.js code) with parser method
   - [ ] Test for dependency size reduction
 
 - [ ] Parameter Validation
-  - [ ] Generate Zod schemas from JSDoc definitions
+  - [ ] Write a parser that would generate Zod schemas from `parameterData.json`
   - [ ] Replace current parameter validation with Zod-based parameter validation
-  - [ ] Clean up legacy code usage (`parameterData.json` and so on)
-  - [ ] Support interleaved parameters
-  - [ ] Support top-level parameter validation wrapping
+  - [ ] Clean up legacy code usage
+  - [ ] Support interleaved parameters (not a priority)
+  - [ ] Support top-level parameter validation wrapping (not a priority)
 
 - [ ] Additional Tasks (lower priority & implementation optional)
   - [ ] Catch errors that do not originate from p5.js and provide friendly errors
@@ -185,3 +189,4 @@ console.log(validateParameters(array(blendModeSchema), ['INVALID']));
 - [benchmark.js](https://benchmarkjs.com/): a benchmarking library that supports high-resolution timers and returns statistically significant results.
 - [JavaScript Parsing Libraries Benchmark](https://chevrotain.io/performance/)
 - [Top 10 Javascript Data Validation Libraries](https://byby.dev/js-object-validators)
+- [Parameters and Return Types Validation for Functions](https://github.com/colinhacks/zod/issues/3394)

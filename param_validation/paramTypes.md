@@ -3,7 +3,7 @@
 | Zod | type |
 |-----|------|
 | `z.any()` | Any |
-| | Array |
+| `z.array()` | Array |
 | | AudioNode |
 | `z.boolean()` | Boolean |
 | | Constant |
@@ -23,7 +23,7 @@
 | `z.string().regex(regex)` | RegExp |
 | | SoundObject |
 | `z.string()` | String |
-| | String[] |
+| `z.array(z.string())` | String[] |
 | | TouchEvent |
 | | UIEvent |
 | | Vector |
