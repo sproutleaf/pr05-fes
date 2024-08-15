@@ -1812,7 +1812,7 @@
             {
               "name": "renderer",
               "optional": 1,
-              "type": "Constant"
+              "type": "P2D|WEBGL"
             },
             {
               "name": "canvas",
@@ -3963,7 +3963,7 @@
             {
               "name": "value",
               "optional": 1,
-              "type": "boolean"
+              "type": "Boolean"
             }
           ]
         }
@@ -3979,7 +3979,7 @@
             {
               "name": "multiple",
               "optional": 1,
-              "type": "boolean"
+              "type": "Boolean"
             }
           ]
         },
@@ -4548,7 +4548,7 @@
           "params": [
             {
               "name": "value",
-              "type": "number"
+              "type": "Number"
             }
           ]
         }
@@ -4563,7 +4563,7 @@
           "params": [
             {
               "name": "value",
-              "type": "number"
+              "type": "Number"
             }
           ]
         }
@@ -5529,12 +5529,12 @@
             {
               "name": "successCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             },
             {
               "name": "errorCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             }
           ]
         }
@@ -5554,12 +5554,12 @@
             {
               "name": "successCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             },
             {
               "name": "errorCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             }
           ]
         }
@@ -5589,12 +5589,12 @@
             {
               "name": "callback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             },
             {
               "name": "errorCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             }
           ]
         }
@@ -5614,12 +5614,12 @@
             {
               "name": "successCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             },
             {
               "name": "errorCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             }
           ]
         }
@@ -5634,17 +5634,17 @@
           "params": [
             {
               "name": "file",
-              "type": "string"
+              "type": "String"
             },
             {
               "name": "callback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             },
             {
               "name": "errorCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             }
           ]
         }
@@ -5674,12 +5674,12 @@
             {
               "name": "callback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             },
             {
               "name": "errorCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             }
           ]
         },
@@ -5696,12 +5696,12 @@
             {
               "name": "callback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             },
             {
               "name": "errorCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             }
           ]
         },
@@ -5713,12 +5713,12 @@
             },
             {
               "name": "callback",
-              "type": "function"
+              "type": "Function"
             },
             {
               "name": "errorCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             }
           ]
         }
@@ -5748,12 +5748,12 @@
             {
               "name": "callback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             },
             {
               "name": "errorCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             }
           ]
         },
@@ -5770,12 +5770,12 @@
             {
               "name": "callback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             },
             {
               "name": "errorCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             }
           ]
         },
@@ -5787,12 +5787,12 @@
             },
             {
               "name": "callback",
-              "type": "function"
+              "type": "Function"
             },
             {
               "name": "errorCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             }
           ]
         }
@@ -5827,12 +5827,12 @@
             {
               "name": "callback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             },
             {
               "name": "errorCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             }
           ]
         },
@@ -5849,12 +5849,12 @@
             {
               "name": "callback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             },
             {
               "name": "errorCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             }
           ]
         }
@@ -6928,7 +6928,7 @@
             },
             {
               "name": "value",
-              "type": "any"
+              "type": "Any"
             }
           ]
         }
@@ -7084,7 +7084,7 @@
             },
             {
               "name": "value",
-              "type": "any"
+              "type": "Any"
             },
             {
               "name": "position",
@@ -8890,17 +8890,17 @@
             {
               "name": "options.normalize",
               "optional": 1,
-              "type": "boolean"
+              "type": "Boolean"
             },
             {
               "name": "options.flipU",
               "optional": 1,
-              "type": "boolean"
+              "type": "Boolean"
             },
             {
               "name": "options.flipV",
               "optional": 1,
-              "type": "boolean"
+              "type": "Boolean"
             }
           ]
         }
@@ -8999,12 +8999,12 @@
             {
               "name": "successCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             },
             {
               "name": "failureCallback",
               "optional": 1,
-              "type": "function"
+              "type": "Function"
             }
           ]
         }
@@ -9387,7 +9387,7 @@
           "params": [
             {
               "name": "enable",
-              "type": "boolean"
+              "type": "Boolean"
             }
           ]
         },
@@ -9685,7 +9685,7 @@
             {
               "name": "append",
               "optional": 1,
-              "type": "boolean"
+              "type": "Boolean"
             }
           ]
         }
@@ -13962,7 +13962,7 @@
           "params": [
             {
               "name": "n",
-              "type": "number"
+              "type": "Number"
             }
           ]
         },
@@ -14292,7 +14292,7 @@
           "params": [
             {
               "name": "len",
-              "type": "number"
+              "type": "Number"
             }
           ]
         },
@@ -14307,7 +14307,7 @@
             },
             {
               "name": "len",
-              "type": "number"
+              "type": "Number"
             },
             {
               "name": "target",
@@ -14348,7 +14348,7 @@
           "params": [
             {
               "name": "angle",
-              "type": "number"
+              "type": "Number"
             }
           ]
         }
@@ -14363,7 +14363,7 @@
           "params": [
             {
               "name": "angle",
-              "type": "number"
+              "type": "Number"
             }
           ]
         },

@@ -1,0 +1,103 @@
+{
+    "p5": {
+        "blendMode": {
+            "name": "blendMode",
+            "overloads": [
+                {
+                    "params": [
+                        {
+                            "name": "mode",
+                            "type": "BLEND|DARKEST|LIGHTEST|DIFFERENCE|MULTIPLY|EXCLUSION|SCREEN|REPLACE|OVERLAY|HARD_LIGHT|SOFT_LIGHT|DODGE|BURN|ADD|REMOVE|SUBTRACT"
+                        }
+                    ]
+                }
+            ],
+            "class": "p5",
+            "module": "Rendering"
+        },
+        "fill": {
+            "name": "fill",
+            "overloads": [
+                {
+                    "params": [
+                        {
+                            "name": "v1",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "v2",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "v3",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "alpha",
+                            "optional": 1,
+                            "type": "Number"
+                        }
+                    ]
+                },
+                {
+                    "params": [
+                        {
+                            "name": "value",
+                            "type": "String"
+                        }
+                    ]
+                },
+                {
+                    "params": [
+                        {
+                            "name": "gray",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "alpha",
+                            "optional": 1,
+                            "type": "Number"
+                        }
+                    ]
+                },
+                {
+                    "params": [
+                        {
+                            "name": "values",
+                            "type": "Number[]"
+                        }
+                    ]
+                },
+                {
+                    "params": [
+                        {
+                            "name": "color",
+                            "type": "p5.Color"
+                        }
+                    ]
+                }
+            ],
+            "class": "p5",
+            "module": "Color"
+        }
+    },
+    "storeItem": {
+        "name": "storeItem",
+        "overloads": [
+            {
+                "params": [
+                    {
+                        "name": "key",
+                        "type": "String"
+                    },
+                    {
+                        "name": "value",
+                        "type": "String|Number|Boolean|Object|Array"
+                    }
+                ]
+            }
+        ],
+        "class": "p5",
+        "module": "Data"
+    }
+}

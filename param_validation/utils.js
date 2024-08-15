@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 const typeSet = new Set();
 
 /* ----- Loops through parameterData.json and extracts all param types ----- */
@@ -9,7 +9,12 @@ function extractParameterTypes() {
             if (Array.isArray(obj.params)) {
                 obj.params.forEach(param => {
                     if (param.type) {
-                        param.type.split('|').forEach(t => typeSet.add(t.trim()));
+                        param.type.split('|').forEach(t => {
+                            const trimmed = t.trim();
+                            if (trimmed !== trimmed.toUpperCase()) {
+                                typeSet.add(trimmed);
+                            }
+                        });
                     }
                 });
             }
@@ -27,6 +32,7 @@ function extractParameterTypes() {
             const jsonData = JSON.parse(data);
             extractTypes(jsonData);
 
+            // Note that all Constant types (i.e. BLEND, DARKEST) are in all caps
             console.log(typeSet.size + " unique types found in params:");
             const sortedTypes = Array.from(typeSet).sort();
             // sortedTypes.forEach(t => console.log(t));
@@ -81,3 +87,4 @@ function removeDescriptionsFromFile() {
 }
 
 extractParameterTypes();
+// removeDescriptionsFromFile();
