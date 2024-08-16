@@ -49,7 +49,7 @@ const generateZodSchemasForFunc = func => {
     const createParamSchema = param => {
         if (param.includes('|')) {
             const types = param.split('|');
-            return types.every(t => /^[A-Z]+$/.test(t))
+            return types.every(t => /^[A-Z_]+$/.test(t))
                 ? z.enum(types)
                 : z.union(types
                     .filter(t => {
@@ -63,7 +63,6 @@ const generateZodSchemasForFunc = func => {
         }
 
         let schema = schemaMap[param.type] || z.any();
-        console.log(`${param.type}: ${schema}`);
         return param.optional ? schema.optional() : schema;
     }
 
@@ -123,5 +122,5 @@ function describeZodSchema(schema, indent = 0) {
 
 // let fillSchemas = generateZodSchemasForFunc('p5.fill');
 // console.log(describeZodSchema(fillSchemas));
-let result = validateParams('p5.saturation', [[100, 100, 100]]);
+let result = validateParams('p5.blendMode', ["MULTIPLY"]);
 console.log(result);
