@@ -14,9 +14,23 @@ const schemaMap = {
     'Number[]': z.array(z.number()),
     'Object': z.object({}),
     // Allows string for any regex
-    'RegExp': z.string().regex((.*?)),
-    'String': z.string()
+    'RegExp': z.string(),
+    'String': z.string(),
+    'String[]': z.array(z.string()),
 };
+
+class p5 {
+    constructor() { }
+    color(r, g, b) { return new p5.Color(r, g, b); }
+}
+
+p5.Color = class Color {
+    constructor(r, g, b) {
+        this.r = r;
+        this.g = g;
+        this.b = b;
+    }
+}
 
 const generateZodSchemasForFunc = func => {
     const ichDot = func.lastIndexOf('.');
@@ -37,21 +51,30 @@ const generateZodSchemasForFunc = func => {
             const types = param.split('|');
             return types.every(t => /^[A-Z]+$/.test(t))
                 ? z.enum(types)
-                : z.union(types.map(t => schemaMap[t] || z.any()));
+                : z.union(types
+                    .filter(t => {
+                        if (!schemaMap[t]) {
+                            console.warn(`Warning: Zod schema not found for type '${t}'. Skip mapping`);
+                            return false;
+                        }
+                        return true;
+                    })
+                    .map(t => schemaMap[t]));
         }
 
         let schema = schemaMap[param.type] || z.any();
+        console.log(`${param.type}: ${schema}`);
         return param.optional ? schema.optional() : schema;
     }
 
     const overloadSchemas = overloads.map(overload => {
-        return z.tuple(overload.params.map(createParamSchema));
+        return z.tuple(overload.params.map(p => createParamSchema(p.type)));
     });
 
     return overloadSchemas.length === 1 ? overloadSchemas[0] : z.union(overloadSchemas);
 }
 
-function validateParams(func, args) {
+export function validateParams(func, args) {
     if (!schemaRegistry.has(func)) {
         let funcSchemas = generateZodSchemasForFunc(func);
         schemaRegistry.set(func, funcSchemas);
@@ -98,6 +121,7 @@ function describeZodSchema(schema, indent = 0) {
     return 'Unknown Schema Type';
 }
 
-let fillSchemas = generateZodSchemasForFunc('p5.fill');
-console.log(describeZodSchema(fillSchemas));
-// validateParams('p5.fill', [100, 100, 100, undefined]);
+// let fillSchemas = generateZodSchemasForFunc('p5.fill');
+// console.log(describeZodSchema(fillSchemas));
+let result = validateParams('p5.saturation', [[100, 100, 100]]);
+console.log(result);

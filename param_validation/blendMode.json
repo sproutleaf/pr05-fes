@@ -79,25 +79,40 @@
             ],
             "class": "p5",
             "module": "Color"
+        },
+        "storeItem": {
+            "name": "storeItem",
+            "overloads": [
+                {
+                    "params": [
+                        {
+                            "name": "key",
+                            "type": "String"
+                        },
+                        {
+                            "name": "value",
+                            "type": "String|Number|Boolean|Object|Array"
+                        }
+                    ]
+                }
+            ],
+            "class": "p5",
+            "module": "Data"
+        },
+        "saturation": {
+            "name": "saturation",
+            "overloads": [
+                {
+                    "params": [
+                        {
+                            "name": "color",
+                            "type": "p5.Color|Number[]|String"
+                        }
+                    ]
+                }
+            ],
+            "class": "p5",
+            "module": "Color"
         }
-    },
-    "storeItem": {
-        "name": "storeItem",
-        "overloads": [
-            {
-                "params": [
-                    {
-                        "name": "key",
-                        "type": "String"
-                    },
-                    {
-                        "name": "value",
-                        "type": "String|Number|Boolean|Object|Array"
-                    }
-                ]
-            }
-        ],
-        "class": "p5",
-        "module": "Data"
     }
 }
