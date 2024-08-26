@@ -162,14 +162,25 @@ console.log(validateParameters(array(blendModeSchema), ['INVALID']));
 ## Project Timeline
 
 - July
-  - [x] Finish Research
-  - [x] Finish writing project plan
+  - [x] Finish Research.
+  - [x] Finish writing project plan.
 
 - August
-  - [ ] Implementing parameter validation (first 2 weeks)
-  - [ ] Implementing detecting overridden constants and functions (second 2 weeks)
+  - [ ] [Implement parameter validation in FES](https://github.com/processing/p5.js/issues/7178)
+    - [x] Write a param validator in the p5.js repo.
+    - [x] Update script (`utils/convert.js`) to further reduce the information included in `parameterData.json`.
+    - [x] Handle schema generation for optional parameters.
+    - [x] Implement a distance calculation mechanism similar to `scoreOverload` that gives users the proper error message when parameter validation fails.
+    - [ ] Validate against real p5 objects.
+    - [x] Validate against real p5 constants.
+    - [ ] Account for less frequently used types (i.e. `AudioNode`, [`lerpPalette`](https://github.com/processing/p5.js/pull/6960/files#diff-7d5cac739244c72efc9a2a9d6b024e5402a6a9700815839052338f1ea93ebe54R1083)).
+    - [ ] Write a test suite for the param validator.
+  - [ ] Revolve new bugs / errors that emerged during the parameter validation implementation.
+    - [ ] `cursor`'s function overload is a mix of constants and `String`this is different from expectation.
+    - [ ] `createAudio` overload is an array of empty arrays.
 
 - September
+  - [ ] Implementing detecting overridden constants and functions
   - [ ] Integration, revision, and testing
   - [ ] Investigate other areas for FES improvements, select prioritized items
 
