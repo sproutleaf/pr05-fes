@@ -174,14 +174,14 @@ console.log(validateParameters(array(blendModeSchema), ['INVALID']));
     - [ ] Validate against real p5 objects.
     - [x] Validate against real p5 constants.
     - [ ] Account for less frequently used types (i.e. `AudioNode`, [`lerpPalette`](https://github.com/processing/p5.js/pull/6960/files#diff-7d5cac739244c72efc9a2a9d6b024e5402a6a9700815839052338f1ea93ebe54R1083)).
-    - [ ] Write a test suite for the param validator.
+    - [ ] Write a test suite for the param validator (WIP)
   - [ ] Revolve new bugs / errors that emerged during the parameter validation implementation.
-    - [ ] `cursor`'s function overload is a mix of constants and `String`this is different from expectation.
+    - [x] `cursor`'s function overload is a mix of constants and `String`this is different from expectation.
     - [ ] `createAudio` overload is an array of empty arrays.
 
 - September
-  - [ ] Implementing detecting overridden constants and functions
-  - [ ] Integration, revision, and testing
+  - [ ] Implement detecting overridden constants and functions in FES
+  - [ ] Revision and integration
   - [ ] Investigate other areas for FES improvements, select prioritized items
 
 - October
